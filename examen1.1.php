@@ -41,32 +41,12 @@ add_action('plugins_loaded', 'createTable');
  * Inserta los datos en la tabla de la base de datos
  * @return void
  */
-/*
-function insertRow()
-{
-    global $wpdb, $redesEnlaces, $redesNombres;
-    $table_name = $wpdb->prefix . 'redesSociales';
-    $flag = $wpdb->get_results("SELECT * FROM $table_name");
-        if (count($flag) == 0) {
-            for ($i = 0; $i < count($redesEnlaces); $i++) {
-                $wpdb->insert(
-                    $table_name,
-                    array(
-                        'redes' => $redesEnlaces[$i],
-                        'enlaces' => $redesNombres[$i]
-                    )
-                );
-            }
-        }
-}
-*/
 
 function insertRow()
 {
     global $wpdb, $redesEnlaces, $redesNombres;
     $table_name = $wpdb->prefix . 'redesSociales';
     $flag = $wpdb->get_results("SELECT * FROM $table_name");
-    if ($flag !== null && is_array($flag)) {
         if (count($flag) == 0) {
             for ($i = 0; $i < count($redesEnlaces); $i++) {
                 $wpdb->insert(
@@ -78,7 +58,6 @@ function insertRow()
                 );
             }
         }
-    }
 }
 
 /**
